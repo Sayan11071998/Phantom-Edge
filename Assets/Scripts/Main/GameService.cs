@@ -1,9 +1,3 @@
-/**  This script demonstrates implementation of the Service Locator Pattern.
-*  If you're interested in learning about Service Locator Pattern, 
-*  you can find a dedicated course on Outscal's website.
-*  Link: https://outscal.com/courses
-**/
-
 using UnityEngine;
 using StatePattern.Utilities;
 using StatePattern.Enemy;

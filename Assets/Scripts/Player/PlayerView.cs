@@ -1,15 +1,13 @@
 ﻿using StatePattern.Enemy;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace StatePattern.Player
 {
     public class PlayerView : MonoBehaviour
     {
-        public PlayerController Controller { get; private set; }
         [SerializeField] private ParticleSystem attackVFX;
 
+        public PlayerController Controller { get; private set; }
         public Rigidbody Rigidbody { get; private set; }
 
         private void Start() => Rigidbody = GetComponent<Rigidbody>();
@@ -26,7 +24,7 @@ namespace StatePattern.Player
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.GetComponent<EnemyView>() != null && !other.isTrigger)
+            if (other.GetComponent<EnemyView>() != null && !other.isTrigger)
             {
                 var enemyController = other.GetComponent<EnemyView>().Controller;
                 Controller.AddEnemy(enemyController);

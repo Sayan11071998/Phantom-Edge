@@ -1,7 +1,4 @@
 namespace StatePattern.UI
 {
-    public interface IUIController 
-    {
-
-    }
+    public interface IUIController { }
 }

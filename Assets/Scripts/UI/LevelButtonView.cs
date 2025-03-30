@@ -7,6 +7,7 @@ namespace StatePattern.UI
     public class LevelButtonView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI buttonText;
+
         private LevelSelectionUIController owner;
         private int levelId;
 

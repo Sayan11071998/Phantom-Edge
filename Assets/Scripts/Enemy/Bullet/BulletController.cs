@@ -1,11 +1,9 @@
 using StatePattern.Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace StatePattern.Enemy.Bullet
 {
-    public class BulletController 
+    public class BulletController
     {
         private BulletScriptableObject bulletScriptableObject;
         private BulletView bulletView;

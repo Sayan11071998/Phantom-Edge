@@ -6,10 +6,11 @@ namespace StatePattern.UI
 {
     public class GameplayUIView : MonoBehaviour, IUIView
     {
-        private GameplayUIController controller;
         [SerializeField] private TextMeshProUGUI enemyCounterText;
         [SerializeField] private Image playerHealth;
         [SerializeField] private GameObject EnemyKillOverlay;
+
+        private GameplayUIController controller;
 
         public void SetController(IUIController controllerToSet) => controller = controllerToSet as GameplayUIController;
 

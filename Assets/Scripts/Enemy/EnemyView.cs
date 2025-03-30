@@ -1,5 +1,4 @@
-﻿using StatePattern.Main;
-using StatePattern.Player;
+﻿using StatePattern.Player;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,13 +7,15 @@ namespace StatePattern.Enemy
 {
     public class EnemyView : MonoBehaviour
     {
-        public EnemyController Controller { get; private set; }
         [SerializeField] public NavMeshAgent Agent;
-        private SphereCollider rangeTriggerCollider;
         [SerializeField] private SpriteRenderer detectableRange;
         [SerializeField] private ParticleSystem muzzleFlash;
         [SerializeField] private GameObject bloodStain;
         [SerializeField] private SpriteRenderer enemyGraphic;
+
+        public EnemyController Controller { get; private set; }
+
+        private SphereCollider rangeTriggerCollider;
 
         private void Start()
         {
@@ -43,13 +44,9 @@ namespace StatePattern.Enemy
         public void ToggleColor(bool value)
         {
             if (value)
-            {
                 enemyGraphic.color = Color.red;
-            }
             else
-            {
                 enemyGraphic.color = Color.white;
-            }
         }
 
         private void Update() => Controller?.UpdateEnemy();
@@ -81,6 +78,5 @@ namespace StatePattern.Enemy
 
             Destroy(gameObject);
         }
-
     }
 }

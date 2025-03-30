@@ -6,10 +6,11 @@ namespace StatePattern.UI
 {
     public class LevelEndUIView : MonoBehaviour, IUIView
     {
-        private LevelEndUIController controller;
         [SerializeField] private TextMeshProUGUI resultText;
         [SerializeField] private Button homeButton;
         [SerializeField] private Button quitButton;
+
+        private LevelEndUIController controller;
 
         private void Start() => SubscribeToButtonClicks();
 
@@ -26,6 +27,5 @@ namespace StatePattern.UI
         public void EnableView() => gameObject.SetActive(true);
 
         public void SetResultText(string textToSet) => resultText.SetText(textToSet);
-
     }
 }

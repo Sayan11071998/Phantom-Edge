@@ -9,7 +9,7 @@ namespace StatePattern.UI
         private LevelSelectionUIView levelSelectionView;
         private LevelButtonView levelButtonPrefab;
         private List<LevelButtonView> levelButtons;
-        
+
         public LevelSelectionUIController(LevelSelectionUIView levelSelectionView, LevelButtonView levelButtonPrefab)
         {
             this.levelSelectionView = levelSelectionView;
@@ -52,7 +52,6 @@ namespace StatePattern.UI
             }
         }
 
-        // To Learn more about Events and Observer Pattern, check out the course list here: https://outscal.com/courses
         public void OnLevelSelected(int levelId)
         {
             GameService.Instance.EventService.OnLevelSelected.InvokeEvent(levelId);

@@ -5,8 +5,8 @@ public class CameraShake : MonoBehaviour
 {
     [SerializeField] private float shakeDuration = 0.2f;
     [SerializeField] private float shakeMagnitude = 0.2f;
-    private Transform cameraTransform;
 
+    private Transform cameraTransform;
     private Vector3 originalPosition;
 
     void Start() => cameraTransform = transform;

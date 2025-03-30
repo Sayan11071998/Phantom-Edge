@@ -1,5 +1,4 @@
 using StatePattern.Enemy.Bullet;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

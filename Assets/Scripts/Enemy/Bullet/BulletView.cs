@@ -1,6 +1,4 @@
 using StatePattern.Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace StatePattern.Enemy.Bullet
@@ -15,11 +13,11 @@ namespace StatePattern.Enemy.Bullet
 
         private void OnTriggerEnter(Collider other)
         {
-            if(HasHitPlayer(other))
+            if (HasHitPlayer(other))
             {
                 if (other.isTrigger)
                     return;
-                else 
+                else
                     controller.PlayerHit(other.GetComponent<PlayerView>());
             }
             Destroy(gameObject);

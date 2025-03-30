@@ -7,13 +7,13 @@ namespace StatePattern.Enemy
 {
     public class EnemyView : MonoBehaviour
     {
+        public EnemyController Controller { get; private set; }
+
         [SerializeField] public NavMeshAgent Agent;
         [SerializeField] private SpriteRenderer detectableRange;
         [SerializeField] private ParticleSystem muzzleFlash;
         [SerializeField] private GameObject bloodStain;
         [SerializeField] private SpriteRenderer enemyGraphic;
-
-        public EnemyController Controller { get; private set; }
 
         private SphereCollider rangeTriggerCollider;
 

@@ -13,7 +13,7 @@ namespace StatePattern.Enemy
         private PlayerController target;
         private float shootTimer;
 
-        public ShootingState(OnePunchManStateMachine stateMachine) => this.stateMachine = stateMachine;
+        public ShootingState(IStateMachine stateMachine) => this.stateMachine = stateMachine;
 
         public void OnStateEnter()
         {

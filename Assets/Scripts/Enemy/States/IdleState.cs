@@ -1,12 +1,13 @@
+using StatePattern.StateMachine;
 using UnityEngine;
 
 namespace StatePattern.Enemy
 {
     public class IdleState : IState
     {
-        public OnePunchManController Owner { get; set; }
+        public EnemyController Owner { get; set; }
 
-        private OnePunchManStateMachine stateMachine;
+        private IStateMachine stateMachine;
         private float timer;
 
         public IdleState(OnePunchManStateMachine stateMachine) => this.stateMachine = stateMachine;
@@ -18,7 +19,12 @@ namespace StatePattern.Enemy
             timer -= Time.deltaTime;
 
             if (timer <= 0)
-                stateMachine.ChangeState(OnePunchManStates.ROTATING);
+            {
+                if (Owner.GetType() == typeof(OnePunchManController))
+                    stateMachine.ChangeState(States.ROTATING);
+                else
+                    stateMachine.ChangeState(States.PATROLLING);
+            }
         }
 
         public void OnStateExit() => timer = 0;

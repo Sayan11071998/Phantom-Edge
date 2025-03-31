@@ -3,18 +3,18 @@ using StatePattern.StateMachine;
 
 namespace StatePattern.Enemy
 {
-    public class OnePunchManController : EnemyController
+    public class PatrolManController : EnemyController
     {
-        private OnePunchManStateMachine stateMachine;
+        private PatrolManStateMachine stateMachine;
 
-        public OnePunchManController(EnemyScriptableObject enemyScriptableObject) : base(enemyScriptableObject)
+        public PatrolManController(EnemyScriptableObject enemyScriptableObject) : base(enemyScriptableObject)
         {
             enemyView.SetController(this);
             CreateStateMachine();
             stateMachine.ChangeState(States.IDLE);
         }
 
-        private void CreateStateMachine() => stateMachine = new OnePunchManStateMachine(this);
+        public void CreateStateMachine() => stateMachine = new PatrolManStateMachine(this);
 
         public override void UpdateEnemy()
         {
@@ -25,7 +25,7 @@ namespace StatePattern.Enemy
         public override void PlayerEnteredRange(PlayerController targetToSet)
         {
             base.PlayerEnteredRange(targetToSet);
-            stateMachine.ChangeState(States.SHOOTING);
+            stateMachine.ChangeState(States.CHASING);
         }
 
         public override void PlayerExitedRange() => stateMachine.ChangeState(States.IDLE);

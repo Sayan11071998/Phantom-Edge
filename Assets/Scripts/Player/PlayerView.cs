@@ -5,9 +5,9 @@ namespace StatePattern.Player
 {
     public class PlayerView : MonoBehaviour
     {
+        public PlayerController Controller { get; private set; }
         [SerializeField] private ParticleSystem attackVFX;
 
-        public PlayerController Controller { get; private set; }
         public Rigidbody Rigidbody { get; private set; }
 
         private void Start() => Rigidbody = GetComponent<Rigidbody>();
@@ -28,7 +28,7 @@ namespace StatePattern.Player
             {
                 var enemyController = other.GetComponent<EnemyView>().Controller;
                 Controller.AddEnemy(enemyController);
-                enemyController.ToggleEnemyColor(true);
+                enemyController.ToggleEnemyColor(EnemyColorType.Vulnerable);
             }
         }
 
@@ -38,7 +38,7 @@ namespace StatePattern.Player
             {
                 var enemyController = other.GetComponent<EnemyView>().Controller;
                 Controller.RemoveEnemy(enemyController);
-                enemyController.ToggleEnemyColor(false);
+                enemyController.ToggleEnemyColor(EnemyColorType.Default);
             }
         }
     }

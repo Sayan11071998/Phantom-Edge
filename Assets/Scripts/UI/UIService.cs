@@ -6,18 +6,18 @@ namespace StatePattern.UI
     public class UIService : MonoBehaviour
     {
         [Header("Level Selection UI")]
+        private LevelSelectionUIController levelSelectionController;
         [SerializeField] private LevelSelectionUIView levelSelectionView;
         [SerializeField] private LevelButtonView levelButtonPrefab;
-        private LevelSelectionUIController levelSelectionController;
 
         [Header("Level ENd UI")]
-        [SerializeField] private LevelEndUIView levelEndView;
         private LevelEndUIController levelEndController;
+        [SerializeField] private LevelEndUIView levelEndView;
 
         [Header("Gameplay UI")]
+        private GameplayUIController gameplayController;
         [SerializeField] private GameplayUIView gameplayView;
         [SerializeField] private CameraShake cameraShake;
-        private GameplayUIController gameplayController;
 
         private void Start()
         {

@@ -1,20 +1,20 @@
-using StatePattern.StateMachine;
 using StatePattern.Player;
+using StatePattern.StateMachine;
 
 namespace StatePattern.Enemy
 {
-    public class OnePunchManController : EnemyController
+    public class HitManController : EnemyController
     {
-        private OnePunchManStateMachine stateMachine;
+        private HitManStateMachine stateMachine;
 
-        public OnePunchManController(EnemyScriptableObject enemyScriptableObject) : base(enemyScriptableObject)
+        public HitManController(EnemyScriptableObject enemyScriptableObject) : base(enemyScriptableObject)
         {
             enemyView.SetController(this);
             CreateStateMachine();
             stateMachine.ChangeState(States.IDLE);
         }
 
-        private void CreateStateMachine() => stateMachine = new OnePunchManStateMachine(this);
+        private void CreateStateMachine() => stateMachine = new HitManStateMachine(this);
 
         public override void UpdateEnemy()
         {
@@ -22,10 +22,16 @@ namespace StatePattern.Enemy
             stateMachine.Update();
         }
 
+        public override void Shoot()
+        {
+            base.Shoot();
+            stateMachine.ChangeState(States.TELEPORTING);
+        }
+
         public override void PlayerEnteredRange(PlayerController targetToSet)
         {
             base.PlayerEnteredRange(targetToSet);
-            stateMachine.ChangeState(States.SHOOTING);
+            stateMachine.ChangeState(States.CHASING);
         }
 
         public override void PlayerExitedRange() => stateMachine.ChangeState(States.IDLE);

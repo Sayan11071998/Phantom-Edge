@@ -3,23 +3,22 @@ using StatePattern.StateMachine;
 
 namespace StatePattern.Enemy
 {
-    public class HitmanController : EnemyController
+    public class HitManController : EnemyController
     {
-        private HitmanStateMachine stateMachine;
+        private HitManStateMachine stateMachine;
 
-        public HitmanController(EnemyScriptableObject enemyScriptableObject) : base(enemyScriptableObject)
+        public HitManController(EnemyScriptableObject enemyScriptableObject) : base(enemyScriptableObject)
         {
             enemyView.SetController(this);
             CreateStateMachine();
             stateMachine.ChangeState(States.IDLE);
         }
 
-        private void CreateStateMachine() => stateMachine = new HitmanStateMachine(this);
+        private void CreateStateMachine() => stateMachine = new HitManStateMachine(this);
 
         public override void UpdateEnemy()
         {
             if (currentState == EnemyState.DEACTIVE) return;
-
             stateMachine.Update();
         }
 

@@ -89,8 +89,10 @@ namespace StatePattern.Player
             if (enemiesInRange.Count > 0)
             {
                 SoundService.PlaySoundEffects(SoundType.PLAYER_ATTACK);
+
                 foreach (EnemyController enemy in enemiesInRange)
                     enemy.Die();
+
                 enemiesInRange.Clear();
             }
             else

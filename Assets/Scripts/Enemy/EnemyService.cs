@@ -59,8 +59,8 @@ namespace StatePattern.Enemy
                 case EnemyType.PatrolMan:
                     enemy = new PatrolManController(enemyScriptableObject);
                     break;
-                case EnemyType.Hitman:
-                    enemy = new HitmanController(enemyScriptableObject);
+                case EnemyType.HitMan:
+                    enemy = new HitManController(enemyScriptableObject);
                     break;
                 // case EnemyType.Robot:
                 //     enemy = new RobotController(enemyScriptableObject);
@@ -90,9 +90,7 @@ namespace StatePattern.Enemy
         public void PlayerDied()
         {
             foreach (EnemyController enemy in activeEnemies)
-            {
                 enemy.SetState(EnemyState.DEACTIVE);
-            }
         }
 
         private bool PlayerWon() => activeEnemies.Count == 0;

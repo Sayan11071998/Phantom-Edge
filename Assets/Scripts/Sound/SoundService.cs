@@ -20,7 +20,6 @@ namespace StatePattern.Sound
         public void PlaySoundEffects(SoundType soundType, bool loopSound = false)
         {
             AudioClip clip = GetSoundClip(soundType);
-
             if (clip != null)
             {
                 audioEffects.loop = loopSound;
@@ -36,7 +35,6 @@ namespace StatePattern.Sound
         private void PlaybackgroundMusic(SoundType soundType, bool loopSound = false)
         {
             AudioClip clip = GetSoundClip(soundType);
-
             if (clip != null)
             {
                 backgroundMusic.loop = loopSound;

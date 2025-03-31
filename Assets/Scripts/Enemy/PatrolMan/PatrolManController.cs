@@ -14,7 +14,7 @@ namespace StatePattern.Enemy
             stateMachine.ChangeState(States.IDLE);
         }
 
-        public void CreateStateMachine() => stateMachine = new PatrolManStateMachine(this);
+        private void CreateStateMachine() => stateMachine = new PatrolManStateMachine(this);
 
         public override void UpdateEnemy()
         {

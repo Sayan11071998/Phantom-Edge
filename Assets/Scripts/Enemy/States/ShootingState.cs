@@ -29,7 +29,7 @@ namespace StatePattern.Enemy
             if (IsRotationComplete(desiredRotation))
             {
                 shootTimer -= Time.deltaTime;
-
+                
                 if (shootTimer <= 0)
                 {
                     ResetTimer();

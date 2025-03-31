@@ -4,9 +4,8 @@ namespace StatePattern.UI
 {
     public class LevelSelectionUIView : MonoBehaviour, IUIView
     {
-        [SerializeField] private Transform levelButtonContainer;
-
         private LevelSelectionUIController controller;
+        [SerializeField] private Transform levelButtonContainer;
 
         public void SetController(IUIController controllerToSet) => controller = controllerToSet as LevelSelectionUIController;
 

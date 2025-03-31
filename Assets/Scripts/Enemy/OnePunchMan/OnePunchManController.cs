@@ -1,5 +1,5 @@
-using StatePattern.Player;
 using StatePattern.StateMachine;
+using StatePattern.Player;
 
 namespace StatePattern.Enemy
 {

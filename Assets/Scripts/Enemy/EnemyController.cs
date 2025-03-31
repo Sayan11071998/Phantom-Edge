@@ -13,6 +13,7 @@ namespace StatePattern.Enemy
 
         protected int currentHealth;
         protected EnemyState currentState;
+
         public NavMeshAgent Agent => enemyView.Agent;
         public EnemyScriptableObject Data => enemyScriptableObject;
         public Quaternion Rotation => enemyView.transform.rotation;

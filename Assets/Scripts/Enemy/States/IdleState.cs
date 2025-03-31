@@ -6,7 +6,7 @@ namespace StatePattern.Enemy
     public class IdleState<T> : IState where T : EnemyController
     {
         public EnemyController Owner { get; set; }
-
+        
         private GenericStateMachine<T> stateMachine;
         private float timer;
 
@@ -20,7 +20,7 @@ namespace StatePattern.Enemy
 
             if (timer <= 0)
             {
-                if (Owner.GetType() == typeof(OnePunchManController))
+                if (typeof(T) == typeof(OnePunchManController))
                     stateMachine.ChangeState(States.ROTATING);
                 else
                     stateMachine.ChangeState(States.PATROLLING);

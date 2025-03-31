@@ -7,7 +7,7 @@ namespace StatePattern.Enemy
     public class ChasingState<T> : IState where T : EnemyController
     {
         public EnemyController Owner { get; set; }
-
+        
         private GenericStateMachine<T> stateMachine;
         private PlayerController target;
 
@@ -22,7 +22,6 @@ namespace StatePattern.Enemy
         public void Update()
         {
             MoveTowardsTarget();
-
             if (ReachedTarget())
             {
                 ResetPath();
@@ -36,7 +35,7 @@ namespace StatePattern.Enemy
 
         private void SetStoppingDistance() => Owner.Agent.stoppingDistance = Owner.Data.PlayerStoppingDistance;
 
-        private void MoveTowardsTarget() => Owner.Agent.SetDestination(target.Position);
+        private bool MoveTowardsTarget() => Owner.Agent.SetDestination(target.Position);
 
         private bool ReachedTarget() => Owner.Agent.remainingDistance <= Owner.Agent.stoppingDistance;
 

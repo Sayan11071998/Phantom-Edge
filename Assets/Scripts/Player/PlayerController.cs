@@ -13,6 +13,27 @@ namespace StatePattern.Player
         private PlayerView playerView;
 
         private int currentHealth;
+        public int CurrentHealth
+        {
+            get => currentHealth;
+            private set
+            {
+                currentHealth = Mathf.Clamp(value, 0, playerScriptableObject.MaximumHealth);
+                UIService.UpdatePlayerHealth((float)currentHealth / playerScriptableObject.MaximumHealth);
+            }
+        }
+
+        private int currentCoins = 0;
+        public int CurrentCoins
+        {
+            get => currentCoins;
+            private set
+            {
+                currentCoins = value;
+                UIService.UpdateCoinsCount(currentCoins);
+            }
+        }
+
         private List<EnemyController> enemiesInRange;
         public Vector3 Position => playerView.transform.position;
         public UIService UIService => GameService.Instance.UIService;
@@ -36,14 +57,14 @@ namespace StatePattern.Player
 
         private void InitializeVariables()
         {
-            currentHealth = playerScriptableObject.MaximumHealth;
+            CurrentCoins = 0;
+            CurrentHealth = playerScriptableObject.MaximumHealth;
             enemiesInRange = new List<EnemyController>();
-            UIService.UpdatePlayerHealth((float)currentHealth / playerScriptableObject.MaximumHealth);
         }
 
         public void UpdatePlayer()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && CurrentHealth > 0)
                 UpdateAttack();
         }
 
@@ -51,15 +72,18 @@ namespace StatePattern.Player
 
         private void UpdateMovement()
         {
-            float horizontalInput = Input.GetAxisRaw("Horizontal");
-            float verticalInput = Input.GetAxisRaw("Vertical");
-
-            Vector3 movementDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-
-            if (movementDirection != Vector3.zero)
+            if (CurrentHealth > 0)
             {
-                RotatePlayer(movementDirection);
-                MovePlayer(movementDirection);
+                float horizontalInput = Input.GetAxisRaw("Horizontal");
+                float verticalInput = Input.GetAxisRaw("Vertical");
+
+                Vector3 movementDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+
+                if (movementDirection != Vector3.zero)
+                {
+                    RotatePlayer(movementDirection);
+                    MovePlayer(movementDirection);
+                }
             }
         }
 
@@ -103,17 +127,15 @@ namespace StatePattern.Player
 
         public void TakeDamage(int damageToInflict)
         {
-            currentHealth -= damageToInflict;
+            CurrentHealth -= damageToInflict;
             SoundService.PlaySoundEffects(SoundType.PLAYER_HIT);
 
-            if (currentHealth <= 0)
+            if (CurrentHealth <= 0)
             {
-                currentHealth = 0;
+                CurrentHealth = 0;
                 PlayerDied();
                 EnemyService.PlayerDied();
             }
-
-            UIService.UpdatePlayerHealth((float)currentHealth / playerScriptableObject.MaximumHealth);
         }
 
         private void PlayerDied()
@@ -125,5 +147,7 @@ namespace StatePattern.Player
         public void AddEnemy(EnemyController enemy) => enemiesInRange.Add(enemy);
 
         public void RemoveEnemy(EnemyController enemy) => enemiesInRange.Remove(enemy);
+
+        public void CollectCoin(int coinValue) => CurrentCoins += coinValue;
     }
 }

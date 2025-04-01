@@ -28,3 +28,6 @@ MonoBehaviour:
   PatrollingPoints: []
   PlayerStoppingDistance: 0
   CloneCount: 0
+  collectableData:
+  - {fileID: 11400000, guid: 62fcb091b48215345a1b93c69752c296, type: 2}
+  - {fileID: 11400000, guid: 62fcb091b48215345a1b93c69752c296, type: 2}

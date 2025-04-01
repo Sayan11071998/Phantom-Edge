@@ -9,8 +9,11 @@ namespace StatePattern.Enemy
     public class EnemyView : MonoBehaviour
     {
         public EnemyController Controller { get; private set; }
+
         [SerializeField] public NavMeshAgent Agent;
+
         private SphereCollider rangeTriggerCollider;
+
         [SerializeField] private SpriteRenderer enemyGraphic;
         [SerializeField] private SpriteRenderer detectableRange;
         [SerializeField] private ParticleSystem muzzleFlash;

@@ -18,7 +18,7 @@ namespace StatePattern.Enemy
         public EnemyScriptableObject Data => enemyScriptableObject;
         public Quaternion Rotation => enemyView.transform.rotation;
         public Vector3 Position => enemyView.transform.position;
-
+        public EnemyView EnemyView => enemyView;
 
         public EnemyController(EnemyScriptableObject enemyScriptableObject)
         {

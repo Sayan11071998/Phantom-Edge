@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Agent: {fileID: 8285538388518601481}
-  enemyGraphic: {fileID: 0}
+  enemyGraphic: {fileID: 6149624851083799720}
   detectableRange: {fileID: 7661401689258592487}
   muzzleFlash: {fileID: 1895581332603329158}
   enemyColors:
@@ -157,6 +157,7 @@ MonoBehaviour:
   - Type: 1
     Color: {r: 1, g: 0, b: 0, a: 1}
   bloodStain: {fileID: 2531642671473160316, guid: efa600927a40a5547a583186d52428d4, type: 3}
+  animator: {fileID: 0}
 --- !u!135 &5443418315836752591
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -309,6 +310,11 @@ PrefabInstance:
 --- !u!4 &906230908726893746 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1551865311445547910, guid: 2e153f79d6249584f9150b05efd8b46c, type: 3}
+  m_PrefabInstance: {fileID: 1808970898209974068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6149624851083799720 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5498079628877663132, guid: 2e153f79d6249584f9150b05efd8b46c, type: 3}
   m_PrefabInstance: {fileID: 1808970898209974068}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4348811624921159499

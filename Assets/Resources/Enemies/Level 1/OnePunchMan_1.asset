@@ -13,21 +13,24 @@ MonoBehaviour:
   m_Name: OnePunchMan_1
   m_EditorClassIdentifier: 
   LevelID: 1
-  EnemyPrefab: {fileID: 4250023737535591060, guid: a3f28737d1adfd04f9431c83f625128c, type: 3}
+  EnemyPrefab: {fileID: 4250023737535591060, guid: 500e9ee3761132443ad817f72560e6ba, type: 3}
   Type: 0
   SpawnPosition: {x: 0.75, y: 1.5, z: 8}
   SpawnRotation: {x: 0, y: -90, z: 0}
   MovementSpeed: 1
   MaximumHealth: 10
   RangeRadius: 4
+  RangeAngle: 60
+  RangeTeleporting: 0
   IdleTime: 2
   RotationSpeed: 100
   RotationThreshold: 0.5
   BulletData: {fileID: 11400000, guid: cfa5b8d473156f34f8a4255079c7aaa0, type: 2}
   RateOfFire: 1
   PatrollingPoints: []
-  PlayerStoppingDistance: 0
+  PlayerAtackingDistance: 0
   CloneCount: 0
+  DelayAfterGameEnd: 1
   collectableData:
   - {fileID: 11400000, guid: 62fcb091b48215345a1b93c69752c296, type: 2}
   - {fileID: 11400000, guid: 62fcb091b48215345a1b93c69752c296, type: 2}

@@ -11,14 +11,8 @@ namespace StatePattern.Enemy
 
         public CloningState(GenericStateMachine<T> stateMachine) => this.stateMachine = stateMachine;
 
-        public void OnStateEnter()
-        {
-            CreateAClone();
-            CreateAClone();
-        }
-
+        public void OnStateEnter() => CreateAClone();
         public void Update() { }
-
         public void OnStateExit() { }
 
         private void CreateAClone()

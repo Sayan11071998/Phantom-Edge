@@ -1,6 +1,7 @@
 ﻿using StatePattern.Enemy.Bullet;
 using StatePattern.Main;
 using StatePattern.Player;
+using StatePattern.Sound;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,6 +20,7 @@ namespace StatePattern.Enemy
         public EnemyScriptableObject Data => enemyScriptableObject;
         public Quaternion Rotation => enemyView.transform.rotation;
         public Vector3 Position => enemyView.transform.position;
+        public int CurrentHealth => currentHealth;
         public EnemyView EnemyView => enemyView;
 
         public EnemyController(EnemyScriptableObject enemyScriptableObject)
@@ -49,39 +51,47 @@ namespace StatePattern.Enemy
             Agent.speed = enemyScriptableObject.MovementSpeed;
         }
 
-        public virtual void Die()
+        public virtual void TakeDamage(int damageValue)
+        {
+            currentHealth -= damageValue;
+            GameService.Instance.SoundService.PlaySoundEffects(SoundType.ENEMY_DEATH);
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                Die();
+            }
+        }
+
+        protected virtual void Die()
         {
             GameService.Instance.EnemyService.EnemyDied(this);
             enemyView.Destroy();
         }
 
         public void ToggleKillOverlay(bool value) => GameService.Instance.UIService.ToggleKillOverlay(value);
+        public void ToggleEnemyColor(EnemyColorType colorToSet) => enemyView.ChangeColor(colorToSet);
 
         public void ShakeCamera() => GameService.Instance.UIService.ShakeCamera();
 
         public void SetRotation(Vector3 eulerAngles) => enemyView.transform.rotation = Quaternion.Euler(eulerAngles);
-
         public void SetRotation(Quaternion desiredRotation) => enemyView.transform.rotation = desiredRotation;
-
-        public void ToggleEnemyColor(EnemyColorType colorToSet) => enemyView.ChangeColor(colorToSet);
+        public void SetState(EnemyState stateToSet) => currentState = stateToSet;
 
         public virtual void Shoot()
         {
             enemyView.PlayShootingEffect();
-            GameService.Instance.SoundService.PlaySoundEffects(Sound.SoundType.ENEMY_SHOOT);
+            GameService.Instance.SoundService.PlaySoundEffects(SoundType.ENEMY_SHOOT);
             BulletController bullet = new BulletController(enemyView.transform, enemyScriptableObject.BulletData);
         }
-
-        public void SetState(EnemyState stateToSet) => currentState = stateToSet;
 
         public virtual void PlayerEnteredRange(PlayerController targetToSet)
         {
             isEnemyAlerted = true;
-            GameService.Instance.SoundService.PlaySoundEffects(Sound.SoundType.ENEMY_ALERT);
+            GameService.Instance.SoundService.PlaySoundEffects(SoundType.ENEMY_ALERT);
         }
 
         public virtual void PlayerExitedRange() => isEnemyAlerted = false;
-
         public virtual void UpdateEnemy() { }
     }
 

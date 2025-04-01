@@ -11,20 +11,23 @@ namespace StatePattern.Enemy
     {
         public EnemyController Controller { get; private set; }
 
-        [SerializeField] public NavMeshAgent Agent;
-
         private SphereCollider rangeTriggerCollider;
 
+        [SerializeField] public NavMeshAgent Agent;
         [SerializeField] private SpriteRenderer enemyGraphic;
         [SerializeField] private SpriteRenderer detectableRange;
         [SerializeField] private ParticleSystem muzzleFlash;
         [SerializeField] private List<EnemyColor> enemyColors;
         [SerializeField] private GameObject bloodStain;
+        [SerializeField] private Animator animator;
 
         private void Start()
         {
             rangeTriggerCollider = GetComponent<SphereCollider>();
             Controller?.InitializeAgent();
+
+            if (animator != null)
+                animator.SetBool("Idle", true);
         }
 
         public void SetController(EnemyController controllerToSet) => Controller = controllerToSet;
@@ -52,8 +55,8 @@ namespace StatePattern.Enemy
 
             if (playerCollider != null)
             {
-                var playerVector = playerCollider.transform.position - transform.position;
-                var isInsideCone = Vector3.Angle(transform.forward, playerVector.normalized) <= Controller.Data.RangeAngle;
+                Vector3 playerVector = playerCollider.transform.position - transform.position;
+                bool isInsideCone = Vector3.Angle(transform.forward, playerVector.normalized) <= Controller.Data.RangeAngle;
 
                 if (isInsideCone && !IsObstructed(playerCollider.transform))
                 {
@@ -77,7 +80,7 @@ namespace StatePattern.Enemy
 
         private bool IsObstructed(Transform target)
         {
-            var direction = target.position - transform.position;
+            Vector3 direction = target.position - transform.position;
 
             if (Physics.Raycast(transform.position, direction, out RaycastHit hit))
                 return hit.transform != target;

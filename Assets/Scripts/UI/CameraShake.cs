@@ -25,7 +25,6 @@ public class CameraShake : MonoBehaviour
         {
             Vector3 randomPos = originalPosition + Random.insideUnitSphere * shakeMagnitude;
             cameraTransform.localPosition = randomPos;
-
             elapsed += Time.deltaTime;
 
             yield return null;

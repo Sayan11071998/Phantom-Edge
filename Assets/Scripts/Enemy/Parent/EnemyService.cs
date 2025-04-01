@@ -5,6 +5,7 @@ using StatePattern.Player;
 using StatePattern.Sound;
 using StatePattern.UI;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace StatePattern.Enemy
 {
@@ -27,7 +28,6 @@ namespace StatePattern.Enemy
         private void InitializeVariables() => activeEnemies = new List<EnemyController>();
 
         private void SubscribeToEvents() => GameService.Instance.EventService.OnLevelSelected.AddListener(SpawnEnemies);
-
         private void UnsubscribeToEvents() => GameService.Instance.EventService.OnLevelSelected.RemoveListener(SpawnEnemies);
 
         public void SpawnEnemies(int levelId)
@@ -78,11 +78,11 @@ namespace StatePattern.Enemy
 
         public void AddEnemy(EnemyController enemy) => activeEnemies.Add(enemy);
 
-        public void EnemyDied(EnemyController deadEnemy)
+        public async void EnemyDied(EnemyController deadEnemy)
         {
             activeEnemies.Remove(deadEnemy);
             PlayerService.GetPlayer().RemoveEnemy(deadEnemy);
-            SoundService.PlaySoundEffects(Sound.SoundType.ENEMY_DEATH);
+            SoundService.PlaySoundEffects(SoundType.ENEMY_DEATH);
 
             foreach (var collectableData in deadEnemy.Data.collectableData)
                 _ = new CollectableController(deadEnemy.EnemyView.transform, collectableData);
@@ -91,7 +91,8 @@ namespace StatePattern.Enemy
 
             if (PlayerWon())
             {
-                SoundService.PlaySoundEffects(Sound.SoundType.GAME_WON);
+                SoundService.PlaySoundEffects(SoundType.GAME_WON);
+                await Task.Delay(deadEnemy.Data.DelayAfterGameEnd * 1000);
                 UIService.GameWon();
             }
         }

@@ -6,7 +6,7 @@ namespace StatePattern.Enemy
     public class IdleState<T> : IState where T : EnemyController
     {
         public EnemyController Owner { get; set; }
-        
+
         private GenericStateMachine<T> stateMachine;
         private float timer;
 

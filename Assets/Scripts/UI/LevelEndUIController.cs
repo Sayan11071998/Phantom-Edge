@@ -17,11 +17,9 @@ namespace StatePattern.UI
         }
 
         public void Show() => levelEndView.EnableView();
-
         public void Hide() => levelEndView.DisableView();
 
         public void OnHomeButtonClicked() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
         public void OnQuitButtonClicked() => Application.Quit();
 
         public void PlayerWon()

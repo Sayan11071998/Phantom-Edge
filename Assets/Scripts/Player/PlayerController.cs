@@ -3,6 +3,7 @@ using StatePattern.Main;
 using StatePattern.Sound;
 using StatePattern.UI;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace StatePattern.Player
@@ -84,6 +85,10 @@ namespace StatePattern.Player
                     RotatePlayer(movementDirection);
                     MovePlayer(movementDirection);
                 }
+                else
+                {
+                    playerView.PlayMovementAnimation(true);
+                }
             }
         }
 
@@ -94,30 +99,27 @@ namespace StatePattern.Player
         }
 
         private float GetTargetRotation(Vector3 movementDirection) => Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
-
         private Vector3 CalculateRotationToSet(float targetRotation) => Vector3.up * Mathf.MoveTowardsAngle(playerView.transform.eulerAngles.y, targetRotation, playerScriptableObject.RotationSpeed * Time.deltaTime);
 
         private void MovePlayer(Vector3 movementDirection)
         {
             Vector3 moveVector = GetMovementVector(movementDirection);
-            playerView.Rigidbody.MovePosition(GetPositionToMoveAt(moveVector));
+            playerView.Move(GetPositionToMoveAt(moveVector));
         }
 
         private Vector3 GetMovementVector(Vector3 movementDirection) => Quaternion.Euler(0f, Camera.main.transform.eulerAngles.y, 0f) * movementDirection;
-
         private Vector3 GetPositionToMoveAt(Vector3 moveVector) => playerView.Rigidbody.position + moveVector * playerScriptableObject.MovementSpeed * Time.deltaTime;
 
         private void UpdateAttack()
         {
-            playerView.PlayAttackVFX();
+            playerView.Attack();
+
             if (enemiesInRange.Count > 0)
             {
                 SoundService.PlaySoundEffects(SoundType.PLAYER_ATTACK);
 
-                foreach (EnemyController enemy in enemiesInRange)
-                    enemy.Die();
-
-                enemiesInRange.Clear();
+                for (int i = 0; i < enemiesInRange.Count; i++)
+                    enemiesInRange[i].TakeDamage(playerScriptableObject.MeleeDamage);
             }
             else
             {
@@ -138,14 +140,15 @@ namespace StatePattern.Player
             }
         }
 
-        private void PlayerDied()
+        private async void PlayerDied()
         {
+            playerView.PlayDeathAnimation();
             SoundService.PlaySoundEffects(SoundType.GAME_LOST);
+            await Task.Delay(playerScriptableObject.DelayAfterDeath * 1000);
             UIService.GameLost();
         }
 
         public void AddEnemy(EnemyController enemy) => enemiesInRange.Add(enemy);
-
         public void RemoveEnemy(EnemyController enemy) => enemiesInRange.Remove(enemy);
 
         public void CollectCoin(int coinValue) => CurrentCoins += coinValue;

@@ -28,15 +28,12 @@ namespace StatePattern.UI
         }
 
         private void SubscribeToEvents() => GameService.Instance.EventService.OnLevelSelected.AddListener(ShowGameplayUI);
-
         private void UnsubscribeToEvents() => GameService.Instance.EventService.OnLevelSelected.RemoveListener(ShowGameplayUI);
 
         public void ShowLevelSelectionUI(int levelCount) => levelSelectionController.Show(levelCount);
-
         private void ShowGameplayUI(int levelId) => gameplayController.Show();
 
         public void ToggleKillOverlay(bool value) => gameplayController.ToggleKillOverlay(value);
-
         public void ShakeCamera() => cameraShake.ShakeCamera();
 
         public void GameWon()
@@ -52,9 +49,7 @@ namespace StatePattern.UI
         }
 
         public void UpdatePlayerHealth(float healthRatio) => gameplayController.SetPlayerHealthUI(healthRatio);
-
         public void UpdateEnemyCount(int activeEnemies, int totalEnemies) => gameplayController.SetEnemyCount(activeEnemies, totalEnemies);
-
         public void UpdateCoinsCount(int coinsCount) => gameplayController.SetCoinsCount(coinsCount);
 
         private void OnDestroy() => UnsubscribeToEvents();

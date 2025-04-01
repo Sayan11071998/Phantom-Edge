@@ -12,10 +12,7 @@ namespace StatePattern.Collectable
 
         public void SetController(CollectableController controllerToSet) => collectableController = controllerToSet;
 
-        public void SetCollectableSprite(CollectableType collectableType)
-        {
-            displayCollectableSprite.sprite = collectableSprites[(int)collectableType];
-        }
+        public void SetCollectableSprite(CollectableType collectableType) => displayCollectableSprite.sprite = collectableSprites[(int)collectableType];
 
         private void OnTriggerEnter(Collider other)
         {

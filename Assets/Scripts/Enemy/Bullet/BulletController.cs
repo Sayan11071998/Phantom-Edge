@@ -8,9 +8,9 @@ namespace StatePattern.Enemy.Bullet
         private BulletScriptableObject bulletScriptableObject;
         private BulletView bulletView;
 
-        public BulletController(Transform parentTransform, BulletScriptableObject bulletScriptableObject)
+        public BulletController(Transform parentTransform, BulletScriptableObject bulletScriptableObjectToSet)
         {
-            this.bulletScriptableObject = bulletScriptableObject;
+            bulletScriptableObject = bulletScriptableObjectToSet;
             InitializeView(parentTransform);
         }
 
@@ -24,7 +24,6 @@ namespace StatePattern.Enemy.Bullet
         }
 
         public void UpdateBullet() => bulletView.transform.Translate(Vector3.forward * bulletScriptableObject.Speed * Time.deltaTime, Space.Self);
-
         public void PlayerHit(PlayerView playerHit) => playerHit.TakeDamage(bulletScriptableObject.Damage);
     }
 }

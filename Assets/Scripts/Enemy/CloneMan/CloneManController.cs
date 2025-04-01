@@ -24,9 +24,7 @@ namespace StatePattern.Enemy
 
         public override void UpdateEnemy()
         {
-            if (currentState == EnemyState.DEACTIVE)
-                return;
-
+            if (currentState == EnemyState.DEACTIVE) return;
             stateMachine.Update();
         }
 

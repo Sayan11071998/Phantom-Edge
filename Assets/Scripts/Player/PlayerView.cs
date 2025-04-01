@@ -41,5 +41,7 @@ namespace StatePattern.Player
                 enemyController.ToggleEnemyColor(EnemyColorType.Default);
             }
         }
+
+        public void CollectCoin(int coinValue) => Controller?.CollectCoin(coinValue);
     }
 }

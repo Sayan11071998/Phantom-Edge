@@ -1,5 +1,7 @@
+using StatePattern.Collectable;
 using StatePattern.Level;
 using StatePattern.Main;
+using StatePattern.Player;
 using StatePattern.Sound;
 using StatePattern.UI;
 using System.Collections.Generic;
@@ -11,6 +13,7 @@ namespace StatePattern.Enemy
         private SoundService SoundService => GameService.Instance.SoundService;
         private UIService UIService => GameService.Instance.UIService;
         private LevelService LevelService => GameService.Instance.LevelService;
+        private PlayerService PlayerService => GameService.Instance.PlayerService;
 
         private List<EnemyController> activeEnemies;
         private int spawnedEnemies;
@@ -78,8 +81,14 @@ namespace StatePattern.Enemy
         public void EnemyDied(EnemyController deadEnemy)
         {
             activeEnemies.Remove(deadEnemy);
+            PlayerService.GetPlayer().RemoveEnemy(deadEnemy);
             SoundService.PlaySoundEffects(Sound.SoundType.ENEMY_DEATH);
+
+            foreach (var collectableData in deadEnemy.Data.collectableData)
+                _ = new CollectableController(deadEnemy.EnemyView.transform, collectableData);
+
             UIService.UpdateEnemyCount(activeEnemies.Count, spawnedEnemies);
+
             if (PlayerWon())
             {
                 SoundService.PlaySoundEffects(Sound.SoundType.GAME_WON);

@@ -11,6 +11,7 @@ namespace StatePattern.Player
         public float MovementSpeed;
         public float RotationSpeed;
         public int MaximumHealth;
-
+        public int MeleeDamage;
+        public int DelayAfterDeath;
     }
 }

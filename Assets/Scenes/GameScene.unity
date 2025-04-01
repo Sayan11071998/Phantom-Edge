@@ -130,14 +130,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3873808189371141831, guid: de25749838c0a5a438314548ca5c239f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3889939496193883868, guid: de25749838c0a5a438314548ca5c239f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3889939497049684046, guid: de25749838c0a5a438314548ca5c239f, type: 3}
       propertyPath: cameraShake
       value: 
@@ -153,10 +145,6 @@ PrefabInstance:
     - target: {fileID: 3889939497049684082, guid: de25749838c0a5a438314548ca5c239f, type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3889939497049684082, guid: de25749838c0a5a438314548ca5c239f, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3889939497049684082, guid: de25749838c0a5a438314548ca5c239f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -228,10 +216,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3889939497049684082, guid: de25749838c0a5a438314548ca5c239f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3889939497241893145, guid: de25749838c0a5a438314548ca5c239f, type: 3}
-      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -20,6 +20,7 @@ namespace StatePattern.Sound
         public void PlaySoundEffects(SoundType soundType, bool loopSound = false)
         {
             AudioClip clip = GetSoundClip(soundType);
+
             if (clip != null)
             {
                 audioEffects.loop = loopSound;
@@ -28,13 +29,14 @@ namespace StatePattern.Sound
             }
             else
             {
-                Debug.LogError("No Audio Clip selected.");
+                Debug.LogError($"No Audio Clip selected for sound type: {soundType}");
             }
         }
 
         private void PlaybackgroundMusic(SoundType soundType, bool loopSound = false)
         {
             AudioClip clip = GetSoundClip(soundType);
+
             if (clip != null)
             {
                 backgroundMusic.loop = loopSound;
@@ -50,8 +52,10 @@ namespace StatePattern.Sound
         private AudioClip GetSoundClip(SoundType soundType)
         {
             Sounds sound = Array.Find(soundScriptableObject.audioList, item => item.soundType == soundType);
+
             if (sound.audio != null)
                 return sound.audio;
+
             return null;
         }
     }

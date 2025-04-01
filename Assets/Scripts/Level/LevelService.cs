@@ -16,7 +16,6 @@ namespace StatePattern.Level
         }
 
         private void SubscribeToEvents() => GameService.Instance.EventService.OnLevelSelected.AddListener(LoadLevel);
-
         private void UnsubscribeToEvents() => GameService.Instance.EventService.OnLevelSelected.RemoveListener(LoadLevel);
 
         public void LoadLevel(int levelID)

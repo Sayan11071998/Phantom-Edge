@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: HitMan_3
   m_EditorClassIdentifier: 
   LevelID: 3
-  EnemyPrefab: {fileID: 4539706903899474985, guid: d2b6b570700801d42a12b29943b0a629, type: 3}
+  EnemyPrefab: {fileID: 4539706903899474985, guid: 2e435335452174d45829e33f9ebd7ae7, type: 3}
   Type: 2
   SpawnPosition: {x: -1, y: 1.5, z: -3}
   SpawnRotation: {x: 0, y: -90, z: 0}
   MovementSpeed: 1.5
   MaximumHealth: 10
   RangeRadius: 6
+  RangeAngle: 60
+  RangeTeleporting: 5
   IdleTime: 3
   RotationSpeed: 100
   RotationThreshold: 0.5
@@ -30,5 +32,9 @@ MonoBehaviour:
   - {x: -1, y: 1.5, z: -3}
   - {x: 3, y: 1.5, z: -3}
   - {x: 3, y: 1.5, z: 7}
-  PlayerStoppingDistance: 3
+  PlayerAtackingDistance: 3
   CloneCount: 0
+  DelayAfterGameEnd: 1
+  collectableData:
+  - {fileID: 11400000, guid: 62fcb091b48215345a1b93c69752c296, type: 2}
+  - {fileID: 11400000, guid: 62fcb091b48215345a1b93c69752c296, type: 2}

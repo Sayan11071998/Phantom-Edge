@@ -8,9 +8,9 @@ namespace StatePattern.Collectable
         private CollectableScriptableObject collectableScriptableObject;
         private CollectableView collectableView;
 
-        public CollectableController(Transform parentTransform, CollectableScriptableObject collectableScriptableObject)
+        public CollectableController(Transform parentTransform, CollectableScriptableObject collectableScriptableObjectToSet)
         {
-            this.collectableScriptableObject = collectableScriptableObject;
+            collectableScriptableObject = collectableScriptableObjectToSet;
             InitializeView(parentTransform);
         }
 
@@ -19,7 +19,7 @@ namespace StatePattern.Collectable
             collectableView = Object.Instantiate(collectableScriptableObject.collectableView);
             Vector2 randomCircle = Random.insideUnitCircle * collectableScriptableObject.collectableRadius;
             Vector3 randomPosition = new(randomCircle.x, 0, randomCircle.y);
-            var spawnPosition = parentTransform.position + randomPosition;
+            Vector3 spawnPosition = parentTransform.position + randomPosition;
             collectableView.transform.SetPositionAndRotation(spawnPosition, parentTransform.rotation);
             collectableView.SetController(this);
             collectableView.SetCollectableSprite(collectableScriptableObject.collectableType);

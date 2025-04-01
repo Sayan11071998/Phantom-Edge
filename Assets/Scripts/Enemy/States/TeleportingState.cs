@@ -7,6 +7,7 @@ namespace StatePattern.Enemy
     public class TeleportingState<T> : IState where T : EnemyController
     {
         public EnemyController Owner { get; set; }
+
         private GenericStateMachine<T> stateMachine;
 
         public TeleportingState(GenericStateMachine<T> stateMachine) => this.stateMachine = stateMachine;
@@ -18,7 +19,6 @@ namespace StatePattern.Enemy
         }
 
         public void Update() { }
-
         public void OnStateExit() { }
 
         private void TeleportToRandomPosition() => Owner.Agent.Warp(GetRandomNavMeshPoint());

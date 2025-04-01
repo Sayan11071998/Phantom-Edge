@@ -8,6 +8,11 @@ namespace StatePattern.StateMachine
         PATROLLING,
         CHASING,
         TELEPORTING,
-        CLONING
+        CLONING,
+        ROARING_INTIMIDATION,
+        QUADRUPLE_ATTACK,
+        FIRE_BREATH,
+        SUMMONING,
+        ULTIMATE
     }
 }

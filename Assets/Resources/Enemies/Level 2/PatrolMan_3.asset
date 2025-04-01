@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: PatrolMan_3
   m_EditorClassIdentifier: 
   LevelID: 2
-  EnemyPrefab: {fileID: 8285538388518601480, guid: 5ca58ac41c04a114284507d3b2809daa, type: 3}
+  EnemyPrefab: {fileID: 8285538388518601480, guid: 3a75c3560efbbc94cb957fc02d56ec84, type: 3}
   Type: 1
   SpawnPosition: {x: -1, y: 1.5, z: -3}
   SpawnRotation: {x: 0, y: -90, z: 0}
   MovementSpeed: 1.5
   MaximumHealth: 10
   RangeRadius: 6
+  RangeAngle: 60
+  RangeTeleporting: 0
   IdleTime: 3
   RotationSpeed: 100
   RotationThreshold: 0.5
@@ -30,5 +32,8 @@ MonoBehaviour:
   - {x: -1, y: 1.5, z: -3}
   - {x: 3, y: 1.5, z: -3}
   - {x: 3, y: 1.5, z: 7}
-  PlayerStoppingDistance: 2
+  PlayerAtackingDistance: 3
   CloneCount: 0
+  DelayAfterGameEnd: 1
+  collectableData:
+  - {fileID: 11400000, guid: 62fcb091b48215345a1b93c69752c296, type: 2}

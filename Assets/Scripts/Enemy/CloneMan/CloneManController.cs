@@ -46,7 +46,7 @@ namespace StatePattern.Enemy
             }
         }
 
-        public override void Die()
+        protected override void Die()
         {
             if (CloneCountLeft > 0)
                 stateMachine.ChangeState(States.CLONING);
@@ -55,9 +55,7 @@ namespace StatePattern.Enemy
         }
 
         public void Teleport() => stateMachine.ChangeState(States.TELEPORTING);
-
         public void SetDefaultColor(EnemyColorType colorType) => enemyView.SetDefaultColor(colorType);
-
         public void ChangeColor(EnemyColorType colorType) => enemyView.ChangeColor(colorType);
     }
 }

@@ -5,6 +5,7 @@
         OnePunchMan,
         PatrolMan,
         HitMan,
-        CloneMan
+        CloneMan,
+        Boss
     }
 }

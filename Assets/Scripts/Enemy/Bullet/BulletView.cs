@@ -20,6 +20,7 @@ namespace StatePattern.Enemy.Bullet
                 else
                     controller.PlayerHit(other.GetComponent<PlayerView>());
             }
+
             Destroy(gameObject);
         }
 

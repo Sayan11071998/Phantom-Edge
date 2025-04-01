@@ -16,7 +16,7 @@ MonoBehaviour:
   LevelPrefab: {fileID: 4399934687650534021, guid: a9962f8fcf4f73f4fb55f6885d4660f7, type: 3}
   EnemyScriptableObjects:
   - {fileID: 11400000, guid: 2e6771f85c08a9c4794ed6d347095ecb, type: 2}
-  - {fileID: 11400000, guid: f83e114877059124fa8825aa47915f64, type: 2}
-  - {fileID: 11400000, guid: 2767823a5905fdc4daa54bc81eb17d8d, type: 2}
-  - {fileID: 11400000, guid: dc694539094db824b919144897cbbf1b, type: 2}
-  - {fileID: 11400000, guid: 159e4d4b8a6495941ae5a973fef84379, type: 2}
+  - {fileID: 11400000, guid: c62856ca7c0e2bb4480a0f997307ca52, type: 2}
+  - {fileID: 11400000, guid: 9a0c40e9c3320d744aa6cce12c6912f4, type: 2}
+  - {fileID: 11400000, guid: d6396e96345aa964eb651e9a5cbb0f1b, type: 2}
+  - {fileID: 11400000, guid: edc470f4435d2824e8a053473fd8e6c9, type: 2}

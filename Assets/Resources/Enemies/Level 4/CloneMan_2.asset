@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: CloneMan_2
   m_EditorClassIdentifier: 
   LevelID: 4
-  EnemyPrefab: {fileID: 948247519368844738, guid: 0a8604f6e0964114cbb9a408b6af74a3, type: 3}
+  EnemyPrefab: {fileID: 948247519368844738, guid: 9e684e8cd5b9f5449a19e7960b6afc32, type: 3}
   Type: 3
   SpawnPosition: {x: -5, y: 1.5, z: 7}
   SpawnRotation: {x: 0, y: -90, z: 0}
   MovementSpeed: 1.5
   MaximumHealth: 10
   RangeRadius: 6
+  RangeAngle: 60
+  RangeTeleporting: 5
   IdleTime: 3
   RotationSpeed: 100
   RotationThreshold: 0.5
@@ -32,5 +34,8 @@ MonoBehaviour:
   - {x: -3, y: 1.5, z: 1}
   - {x: -8, y: 1.5, z: 3}
   - {x: -5, y: 1.5, z: 7}
-  PlayerStoppingDistance: 3
+  PlayerAtackingDistance: 5
   CloneCount: 2
+  DelayAfterGameEnd: 2
+  collectableData:
+  - {fileID: 11400000, guid: 62fcb091b48215345a1b93c69752c296, type: 2}

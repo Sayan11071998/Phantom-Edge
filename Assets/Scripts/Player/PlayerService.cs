@@ -14,7 +14,6 @@ namespace StatePattern.Player
         }
 
         private void SubscribeToEvents() => GameService.Instance.EventService.OnLevelSelected.AddListener(SpawnPlayer);
-
         private void UnsubscribeToEvents() => GameService.Instance.EventService.OnLevelSelected.RemoveListener(SpawnPlayer);
 
         public void SpawnPlayer(int levelId)

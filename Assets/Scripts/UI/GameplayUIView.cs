@@ -16,13 +16,10 @@ namespace StatePattern.UI
         public void SetController(IUIController controllerToSet) => controller = controllerToSet as GameplayUIController;
 
         public void DisableView() => gameObject.SetActive(false);
-
         public void EnableView() => gameObject.SetActive(true);
 
         public void UpdateEnemyCounterText(string enemyCounter) => enemyCounterText.SetText(enemyCounter);
-
         public void UpdatePlayerHealthUI(float helathRatio) => playerHealth.transform.localScale = new Vector3(helathRatio, 1, 1);
-
         public void UpdateCoinsCollectedUI(string coinsCollected) => coinsCollectedText.text = coinsCollected;
 
         public void ToggleKillOverlay(bool value) => EnemyKillOverlay.SetActive(value);

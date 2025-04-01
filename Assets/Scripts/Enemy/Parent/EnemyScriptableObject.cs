@@ -27,9 +27,10 @@ namespace StatePattern.Enemy
         public float RateOfFire;
 
         public List<Vector3> PatrollingPoints;
-        public float PlayerStoppingDistance;
+        public float PlayerAtackingDistance;
 
         public int CloneCount;
+        public int DelayAfterGameEnd;
 
         public List<CollectableScriptableObject> collectableData;
     }

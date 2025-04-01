@@ -24,10 +24,20 @@ namespace StatePattern.Enemy
 
         public override void PlayerEnteredRange(PlayerController targetToSet)
         {
-            base.PlayerEnteredRange(targetToSet);
-            stateMachine.ChangeState(States.SHOOTING);
+            if (!isEnemyAlerted)
+            {
+                base.PlayerEnteredRange(targetToSet);
+                stateMachine.ChangeState(States.SHOOTING);
+            }
         }
 
-        public override void PlayerExitedRange() => stateMachine.ChangeState(States.IDLE);
+        public override void PlayerExitedRange()
+        {
+            if (isEnemyAlerted)
+            {
+                base.PlayerExitedRange();
+                stateMachine.ChangeState(States.IDLE);
+            }
+        }
     }
 }

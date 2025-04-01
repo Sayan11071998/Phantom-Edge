@@ -1,6 +1,7 @@
 ﻿using StatePattern.Player;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -28,7 +29,7 @@ namespace StatePattern.Enemy
 
         public void SetController(EnemyController controllerToSet) => Controller = controllerToSet;
 
-        public void SetTriggerRadius(float radiusToSet)
+        public void SetDetectableZone(float radiusToSet, float angleToSet)
         {
             SetRangeColliderRadius(radiusToSet);
             SetRangeImageRadius(radiusToSet);
@@ -44,18 +45,44 @@ namespace StatePattern.Enemy
 
         public void PlayShootingEffect() => muzzleFlash.Play();
 
-        private void Update() => Controller?.UpdateEnemy();
-
-        private void OnTriggerEnter(Collider other)
+        private void Update()
         {
-            if (other.GetComponent<PlayerView>() != null && !other.isTrigger)
-                Controller.PlayerEnteredRange(other.GetComponent<PlayerView>().Controller);
+            var otherColliders = Physics.OverlapSphere(transform.position, Controller.Data.RangeRadius)?.ToList();
+            var playerCollider = otherColliders?.Find(item => item.GetComponent<PlayerView>() != null && !item.isTrigger);
+
+            if (playerCollider != null)
+            {
+                var playerVector = playerCollider.transform.position - transform.position;
+                var isInsideCone = Vector3.Angle(transform.forward, playerVector.normalized) <= Controller.Data.RangeAngle;
+
+                if (isInsideCone && !IsObstructed(playerCollider.transform))
+                {
+                    detectableRange.color = Color.red;
+                    Controller.PlayerEnteredRange(playerCollider.GetComponent<PlayerView>().Controller);
+                }
+                else
+                {
+                    detectableRange.color = Color.green;
+                    Controller.PlayerExitedRange();
+                }
+            }
+            else
+            {
+                detectableRange.color = Color.green;
+                Controller.PlayerExitedRange();
+            }
+
+            Controller?.UpdateEnemy();
         }
 
-        private void OnTriggerExit(Collider other)
+        private bool IsObstructed(Transform target)
         {
-            if (other.GetComponent<PlayerView>() != null && !other.isTrigger)
-                Controller.PlayerExitedRange();
+            var direction = target.position - transform.position;
+
+            if (Physics.Raycast(transform.position, direction, out RaycastHit hit))
+                return hit.transform != target;
+
+            return false;
         }
 
         public void Destroy() => StartCoroutine(EnemyDeathSequence());

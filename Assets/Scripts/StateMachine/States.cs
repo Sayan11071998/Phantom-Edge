@@ -13,6 +13,9 @@ namespace StatePattern.StateMachine
         QUADRUPLE_ATTACK,
         FIRE_BREATH,
         SUMMONING,
-        ULTIMATE
+        ULTIMATE,
+        CHARGE_ATTACK,
+        ADAPTIVE_DEFENSE,
+        RAMPAGE
     }
 }

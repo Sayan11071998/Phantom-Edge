@@ -71,6 +71,9 @@ namespace StatePattern.Enemy
                 case EnemyType.Infernoth:
                     enemy = new InfernothController(enemyScriptableObject);
                     break;
+                case EnemyType.Titanis:
+                    enemy = new TitanisController(enemyScriptableObject);
+                    break;
                 default:
                     enemy = new EnemyController(enemyScriptableObject);
                     break;

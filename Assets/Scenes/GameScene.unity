@@ -805,6 +805,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7c34e5ad108e2fe42992e2b182ef0931, type: 2}
   - {fileID: 11400000, guid: be7c349780d6ac14daa55dee0da426e2, type: 2}
   - {fileID: 11400000, guid: 7195e7e4c41dec14e90bb0506b986a1c, type: 2}
+  - {fileID: 11400000, guid: c6596dbc7cc19db44a880525ac772638, type: 2}
   sfxSource: {fileID: 629913882}
   bgMusicSource: {fileID: 973737936}
 --- !u!4 &2053379264

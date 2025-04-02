@@ -127,6 +127,18 @@ namespace StatePattern.Enemy
             if (animator != null)
                 animator.SetTrigger("QuadAttack");
         }
+
+        public void ChargeAttack()
+        {
+            if (animator != null)
+                animator.SetTrigger("ChargeAttack");
+        }
+
+        public void RampageAttack()
+        {
+            if (animator != null)
+                animator.SetTrigger("RampageAttack");
+        }
     }
 
     [System.Serializable]
@@ -140,6 +152,7 @@ namespace StatePattern.Enemy
     {
         Default,
         Vulnerable,
-        Clone
+        Clone,
+        Monster1
     }
 }

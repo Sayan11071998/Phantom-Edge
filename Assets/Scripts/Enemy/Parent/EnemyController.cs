@@ -88,6 +88,22 @@ namespace StatePattern.Enemy
 
         public virtual void FireBreathAttack() { }
         public virtual void QuadrupleAttack() { }
+        public virtual void ChargeAttack() { }
+        public virtual void RampageAttack() { }
+
+        public virtual void SetDefensiveMode(bool isDefensieve)
+        {
+            if (isDefensieve)
+            {
+                Data.MovementSpeed = 0;
+                Data.RotationSpeed = 0;
+            }
+            else
+            {
+                Data.MovementSpeed = Data.MovementSpeed;
+                Data.RotationSpeed = Data.RotationSpeed;
+            }
+        }
 
         public virtual void PlayerEnteredRange(PlayerController targetToSet)
         {

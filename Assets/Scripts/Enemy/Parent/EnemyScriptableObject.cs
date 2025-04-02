@@ -31,10 +31,13 @@ namespace StatePattern.Enemy
 
         public int CloneCount;
         public int DelayAfterGameEnd;
+        public bool IsDefensive;
 
         public int SlowPlayerDownDuration;
         public int FireBreathDamage;
         public int QuadrupleAttackDamage;
+        public int ChargeAttackDamage;
+        public int RampageAttackDamage;
 
         public List<EnemyScriptableObject> InfernothWave;
         public List<CollectableScriptableObject> collectableData;

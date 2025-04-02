@@ -6,6 +6,7 @@
         PatrolMan,
         HitMan,
         CloneMan,
-        Infernoth
+        Infernoth,
+        Titanis
     }
 }

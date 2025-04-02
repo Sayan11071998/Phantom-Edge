@@ -33,4 +33,4 @@ MonoBehaviour:
   DelayAfterGameEnd: 1
   collectableData:
   - {fileID: 11400000, guid: 62fcb091b48215345a1b93c69752c296, type: 2}
-  - {fileID: 11400000, guid: 62fcb091b48215345a1b93c69752c296, type: 2}
+  - {fileID: 11400000, guid: 873a24e8cde99f244bc8cccb1fc8630c, type: 2}

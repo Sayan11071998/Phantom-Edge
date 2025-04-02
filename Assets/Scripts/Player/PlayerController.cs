@@ -152,5 +152,7 @@ namespace StatePattern.Player
         public void RemoveEnemy(EnemyController enemy) => enemiesInRange.Remove(enemy);
 
         public void CollectCoin(int coinValue) => CurrentCoins += coinValue;
+        public void CollectHealthPickup(int healthValue) => CurrentHealth += healthValue;
+        public void FreezeEnemies(int freezeTime, float freezeFactor) => EnemyService.FreezeEnemies(freezeTime, freezeFactor);
     }
 }

@@ -32,6 +32,15 @@ namespace StatePattern.Collectable
                 case CollectableType.Coin:
                     playerHit.CollectCoin(collectableScriptableObject.coinValue);
                     break;
+                case CollectableType.FreezeBombs:
+                    playerHit.FreezeEnemies(collectableScriptableObject.freezeTime, collectableScriptableObject.freezeFactor);
+                    break;
+                case CollectableType.TeleportationPads:
+                    playerHit.CollectTeleportationPad(collectableScriptableObject.teleportationPosition);
+                    break;
+                case CollectableType.HealthPickups:
+                    playerHit.CollectHealthPickup(collectableScriptableObject.healthValue);
+                    break;
             }
         }
     }

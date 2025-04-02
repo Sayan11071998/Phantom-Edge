@@ -70,6 +70,9 @@ MonoBehaviour:
   displayCollectableSprite: {fileID: 3103367477433080728}
   collectableSprites:
   - {fileID: 21300000, guid: 3206a00b6ff488641b01bff4103bf556, type: 3}
+  - {fileID: 21300000, guid: df92f67f00aca5b4d94b36166a8215c2, type: 3}
+  - {fileID: 21300000, guid: 68634c40ba3b921498532a00954af780, type: 3}
+  - {fileID: 21300000, guid: 82293948f99b2e34db4788913578ea0c, type: 3}
 --- !u!1 &6314119530428830156
 GameObject:
   m_ObjectHideFlags: 0

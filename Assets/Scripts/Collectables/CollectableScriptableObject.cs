@@ -10,5 +10,9 @@ namespace StatePattern.Collectable
         public float collectableRadius;
 
         public int coinValue;
+        public int freezeTime;
+        public float freezeFactor;
+        public Vector3 teleportationPosition;
+        public int healthValue;
     }
 }

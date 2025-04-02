@@ -59,5 +59,8 @@ namespace StatePattern.Player
         }
 
         public void CollectCoin(int coinValue) => Controller?.CollectCoin(coinValue);
+        public void CollectHealthPickup(int healthValue) => Controller?.CollectHealthPickup(healthValue);
+        public void CollectTeleportationPad(Vector3 teleportationPosition) => transform.position = teleportationPosition;
+        public void FreezeEnemies(int freezeTime, float freezeFactor) => Controller?.FreezeEnemies(freezeTime, freezeFactor);
     }
 }

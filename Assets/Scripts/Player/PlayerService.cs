@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using StatePattern.Main;
 
 namespace StatePattern.Player
@@ -23,5 +24,14 @@ namespace StatePattern.Player
         }
 
         public PlayerController GetPlayer() => playerController;
+
+        public async void SlowPlayerDown(int seconds)
+        {
+            playerScriptableObject.MovementSpeed /= 2;
+            playerScriptableObject.RotationSpeed /= 2;
+            await Task.Delay(seconds * 1000);
+            playerScriptableObject.MovementSpeed *= 2;
+            playerScriptableObject.RotationSpeed *= 2;
+        }
     }
 }

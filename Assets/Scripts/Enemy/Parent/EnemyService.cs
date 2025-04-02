@@ -68,6 +68,9 @@ namespace StatePattern.Enemy
                 case EnemyType.CloneMan:
                     enemy = new CloneManController(enemyScriptableObject);
                     break;
+                case EnemyType.Infernoth:
+                    enemy = new InfernothController(enemyScriptableObject);
+                    break;
                 default:
                     enemy = new EnemyController(enemyScriptableObject);
                     break;

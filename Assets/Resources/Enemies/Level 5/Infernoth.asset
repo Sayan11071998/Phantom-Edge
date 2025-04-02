@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1594681ca05b1e47a6918e6f825a6e0, type: 3}
+  m_Name: Infernoth
+  m_EditorClassIdentifier: 
+  LevelID: 5
+  EnemyPrefab: {fileID: 948247519368844738, guid: e261d351816d9f14fbe354082c2c9b20, type: 3}
+  Type: 4
+  SpawnPosition: {x: 0, y: 0, z: 0}
+  SpawnRotation: {x: 0, y: -180, z: 0}
+  MovementSpeed: 2.5
+  MaximumHealth: 201
+  RangeRadius: 6
+  RangeAngle: 45
+  RangeTeleporting: 5
+  IdleTime: 9
+  RotationSpeed: 500
+  RotationThreshold: 0.5
+  BulletData: {fileID: 11400000, guid: cfa5b8d473156f34f8a4255079c7aaa0, type: 2}
+  RateOfFire: 5
+  PatrollingPoints: []
+  PlayerAtackingDistance: 3
+  CloneCount: 0
+  DelayAfterGameEnd: 2
+  SlowPlayerDownDuration: 2
+  FireBreathDamage: 5
+  QuadrupleAttackDamage: 10
+  InfernothWave:
+  - {fileID: 11400000, guid: 2e6771f85c08a9c4794ed6d347095ecb, type: 2}
+  - {fileID: 11400000, guid: a032fdbd04c926d4b8093538ffe5d2ae, type: 2}
+  - {fileID: 11400000, guid: faecd11ed775db340b08a4d8ad8cc975, type: 2}
+  - {fileID: 11400000, guid: 8c07b835db78bd54fa8d7ad9423004f5, type: 2}
+  - {fileID: 11400000, guid: b4c5914e077ee014ba79105e942c85ad, type: 2}
+  collectableData:
+  - {fileID: 11400000, guid: 62fcb091b48215345a1b93c69752c296, type: 2}
+  - {fileID: 11400000, guid: 873a24e8cde99f244bc8cccb1fc8630c, type: 2}
+  - {fileID: 11400000, guid: a1af69ed785ae2641927588ed35cbdc8, type: 2}
+  - {fileID: 11400000, guid: bcf9e70400acb6e42978baa4418da90e, type: 2}

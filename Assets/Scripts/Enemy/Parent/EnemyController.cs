@@ -86,6 +86,9 @@ namespace StatePattern.Enemy
             BulletController bullet = new BulletController(enemyView.transform, enemyScriptableObject.BulletData);
         }
 
+        public virtual void FireBreathAttack() { }
+        public virtual void QuadrupleAttack() { }
+
         public virtual void PlayerEnteredRange(PlayerController targetToSet)
         {
             isEnemyAlerted = true;

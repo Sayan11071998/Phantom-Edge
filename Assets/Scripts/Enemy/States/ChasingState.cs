@@ -23,7 +23,18 @@ namespace StatePattern.Enemy
             if (ReachedTarget())
             {
                 ResetPath();
-                stateMachine.ChangeState(States.SHOOTING);
+
+                if (typeof(T) != typeof(InfernothController))
+                {
+                    stateMachine.ChangeState(States.SHOOTING);
+                }
+                else
+                {
+                    if (Random.value > 0.5)
+                        stateMachine.ChangeState(States.QUADRUPLE_ATTACK);
+                    else
+                        stateMachine.ChangeState(States.FIRE_BREATH);
+                }
             }
         }
 

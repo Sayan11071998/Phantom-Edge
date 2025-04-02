@@ -6,6 +6,6 @@
         PatrolMan,
         HitMan,
         CloneMan,
-        Boss
+        Infernoth
     }
 }

@@ -19,4 +19,4 @@ MonoBehaviour:
   RotationSpeed: 500
   MaximumHealth: 100
   MeleeDamage: 25
-  DelayAfterDeath: 1
+  DelayAfterDeath: 2

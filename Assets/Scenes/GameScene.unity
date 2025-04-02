@@ -138,6 +138,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3889939497049684080, guid: de25749838c0a5a438314548ca5c239f, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889939497049684080, guid: de25749838c0a5a438314548ca5c239f, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 3889939497049684082, guid: de25749838c0a5a438314548ca5c239f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -796,6 +804,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3ceefc333a7c35a4d8743f64f88754db, type: 2}
   - {fileID: 11400000, guid: 7c34e5ad108e2fe42992e2b182ef0931, type: 2}
   - {fileID: 11400000, guid: be7c349780d6ac14daa55dee0da426e2, type: 2}
+  - {fileID: 11400000, guid: 7195e7e4c41dec14e90bb0506b986a1c, type: 2}
   sfxSource: {fileID: 629913882}
   bgMusicSource: {fileID: 973737936}
 --- !u!4 &2053379264

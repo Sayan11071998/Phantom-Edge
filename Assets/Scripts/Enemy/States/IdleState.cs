@@ -22,8 +22,10 @@ namespace StatePattern.Enemy
             {
                 if (typeof(T) == typeof(OnePunchManController))
                     stateMachine.ChangeState(States.ROTATING);
-                else
+                else if (typeof(T) != typeof(InfernothController))
                     stateMachine.ChangeState(States.PATROLLING);
+                else
+                    stateMachine.ChangeState(States.TELEPORTING);
             }
         }
 

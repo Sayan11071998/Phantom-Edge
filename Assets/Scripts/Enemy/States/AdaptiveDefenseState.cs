@@ -1,4 +1,5 @@
 using StatePattern.StateMachine;
+using UnityEngine;
 
 namespace StatePattern.Enemy
 {
@@ -7,20 +8,29 @@ namespace StatePattern.Enemy
         public EnemyController Owner { get; set; }
 
         private GenericStateMachine<T> stateMachine;
+        private float defenseTimer;
 
         public AdaptiveDefenseState(GenericStateMachine<T> stateMachine) => this.stateMachine = stateMachine;
 
         public void OnStateEnter()
         {
-            Owner.Data.IsDefensive = true;
+            Owner.isDefensive = true;
             Owner.SetDefensiveMode(true);
+            defenseTimer = Owner.Data.DefenseDuration;
         }
 
-        public void Update() { }
+        public void Update()
+        {
+            defenseTimer -= Time.deltaTime;
+            if (defenseTimer <= 0)
+            {
+                stateMachine.ChangeState(States.IDLE);
+            }
+        }
 
         public void OnStateExit()
         {
-            Owner.Data.IsDefensive = false;
+            Owner.isDefensive = false;
             Owner.SetDefensiveMode(false);
         }
     }

@@ -31,12 +31,17 @@ MonoBehaviour:
   PlayerAtackingDistance: 3
   CloneCount: 0
   DelayAfterGameEnd: 2
-  IsDefensive: 0
+  MeleeAttackDamage: 15
   SlowPlayerDownDuration: 2
   FireBreathDamage: 0
   QuadrupleAttackDamage: 0
+  RoarDuration: 3
   ChargeAttackDamage: 15
+  ChargeSpeed: 6
+  DefenseDuration: 5
   RampageAttackDamage: 30
+  RampageDuration: 5
+  AttackDuration: 5
   InfernothWave:
   - {fileID: 11400000, guid: 2e6771f85c08a9c4794ed6d347095ecb, type: 2}
   - {fileID: 11400000, guid: a032fdbd04c926d4b8093538ffe5d2ae, type: 2}

@@ -17,6 +17,9 @@ namespace StatePattern.Enemy
         protected bool isEnemyAlerted = false;
         protected EnemyState currentState;
 
+        public bool isDefensive;
+        public float damageMultiplier = 1f;
+
         public NavMeshAgent Agent => enemyView.Agent;
         public EnemyScriptableObject Data => enemyScriptableObject;
         public Quaternion Rotation => enemyView.transform.rotation;
@@ -54,14 +57,13 @@ namespace StatePattern.Enemy
 
         public virtual void TakeDamage(int damageValue)
         {
-            currentHealth -= damageValue;
-            GameService.Instance.SoundService.PlaySoundEffects(SoundType.ENEMY_DEATH);
-
-            if (currentHealth <= 0)
+            int actualDamage = damageValue;
+            if (isDefensive)
             {
-                currentHealth = 0;
-                Die();
+                actualDamage = (int)(damageValue * 0.5f); // 50% damage reduction
             }
+            currentHealth -= actualDamage;
+            if (currentHealth <= 0) Die();
         }
 
         protected virtual void Die()
@@ -88,22 +90,31 @@ namespace StatePattern.Enemy
 
         public virtual void FireBreathAttack() { }
         public virtual void QuadrupleAttack() { }
-        public virtual void ChargeAttack() { }
-        public virtual void RampageAttack() { }
 
-        public virtual void SetDefensiveMode(bool isDefensieve)
+        public virtual void ChargeAttack()
         {
-            if (isDefensieve)
-            {
-                Data.MovementSpeed = 0;
-                Data.RotationSpeed = 0;
-            }
-            else
-            {
-                Data.MovementSpeed = Data.MovementSpeed;
-                Data.RotationSpeed = Data.RotationSpeed;
-            }
+            enemyView.ChargeAttack();
+            GameService.Instance.SoundService.PlaySoundEffects(Sound.SoundType.ENEMY_SHOOT);
+            var player = GameService.Instance.PlayerService.GetPlayer();
+            if (Vector3.Distance(player.Position, enemyView.transform.position) <= Data.PlayerAtackingDistance)
+                player.TakeDamage((int)(Data.ChargeAttackDamage * damageMultiplier));
         }
+
+        public virtual void RampageAttack()
+        {
+            enemyView.RampageAttack();
+            GameService.Instance.SoundService.PlaySoundEffects(Sound.SoundType.ENEMY_SHOOT);
+            var player = GameService.Instance.PlayerService.GetPlayer();
+            if (Vector3.Distance(player.Position, enemyView.transform.position) <= Data.PlayerAtackingDistance)
+                player.TakeDamage((int)(Data.MeleeAttackDamage * damageMultiplier));
+        }
+
+        public virtual void SetDefensiveMode(bool isDefensive)
+        {
+            Agent.speed = isDefensive ? 0 : Data.MovementSpeed;
+        }
+
+        public virtual void ShakeNearbyObjects() => GameService.Instance.UIService.ShakeCamera();
 
         public virtual void PlayerEnteredRange(PlayerController targetToSet)
         {

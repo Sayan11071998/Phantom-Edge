@@ -12,37 +12,71 @@ namespace StatePattern.Enemy
         private GenericStateMachine<T> stateMachine;
         private PlayerController target;
         private float rampageTimer;
+        private float attackTimer;
+        private enum SubState { Moving, Attacking }
+        private SubState subState;
 
         public RampageState(GenericStateMachine<T> stateMachine) => this.stateMachine = stateMachine;
 
-        public void OnStateEnter() => SetTarget();
+        public void OnStateEnter()
+        {
+            target = GameService.Instance.PlayerService.GetPlayer();
+            Owner.Agent.speed *= 1.5f;
+            Owner.damageMultiplier = 1.5f;
+            rampageTimer = Owner.Data.RampageDuration;
+            subState = SubState.Moving;
+        }
 
         public void Update()
         {
-            MoveTowardsTarget();
-
-            if (ReachedTarget())
+            rampageTimer -= Time.deltaTime;
+            if (rampageTimer <= 0)
             {
-                ResetPath();
-                stateMachine.ChangeState(States.RAMPAGE);
+                stateMachine.ChangeState(States.IDLE);
+                return;
+            }
+
+            switch (subState)
+            {
+                case SubState.Moving:
+                    if (target != null)
+                    {
+                        Owner.Agent.SetDestination(target.Position);
+                        if (Vector3.Distance(Owner.Position, target.Position) <= Owner.Data.PlayerAtackingDistance)
+                        {
+                            subState = SubState.Attacking;
+                            StartAttack();
+                        }
+                    }
+                    break;
+                case SubState.Attacking:
+                    attackTimer -= Time.deltaTime;
+                    if (attackTimer <= 0)
+                    {
+                        subState = SubState.Moving;
+                    }
+                    break;
             }
         }
 
-        public void OnStateExit() => target = null;
-
-        private void SetTarget() => target = GameService.Instance.PlayerService.GetPlayer();
-        private bool MoveTowardsTarget() => Owner.Agent.SetDestination(target.Position);
-
-        private bool ReachedTarget()
+        public void OnStateExit()
         {
-            var currentDistanceFromPlayer = Vector3.Distance(Owner.Position, target.Position);
-            return currentDistanceFromPlayer <= Owner.Data.PlayerAtackingDistance;
+            Owner.Agent.speed /= 1.5f;
+            Owner.damageMultiplier = 1f;
+            target = null;
         }
 
-        private void ResetPath()
+        private void StartAttack()
         {
-            Owner.Agent.isStopped = true;
-            Owner.Agent.ResetPath();
+            if (Random.value > 0.5f)
+            {
+                Owner.ChargeAttack();
+            }
+            else
+            {
+                Owner.RampageAttack();
+            }
+            attackTimer = Owner.Data.AttackDuration;
         }
     }
 }

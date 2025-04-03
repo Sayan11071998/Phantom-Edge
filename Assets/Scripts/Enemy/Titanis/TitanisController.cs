@@ -53,7 +53,6 @@ namespace StatePattern.Enemy
 
         public override void ChargeAttack()
         {
-            base.ChargeAttack();
             enemyView.ChargeAttack();
             GameService.Instance.SoundService.PlaySoundEffects(Sound.SoundType.ENEMY_SHOOT);
 
@@ -64,7 +63,6 @@ namespace StatePattern.Enemy
 
         public override void RampageAttack()
         {
-            base.RampageAttack();
             enemyView.RampageAttack();
             GameService.Instance.SoundService.PlaySoundEffects(Sound.SoundType.ENEMY_SHOOT);
 

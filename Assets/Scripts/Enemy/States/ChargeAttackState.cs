@@ -7,7 +7,6 @@ namespace StatePattern.Enemy
 {
     public class ChargeAttackState<T> : IState where T : EnemyController
     {
-
         public EnemyController Owner { get; set; }
 
         private GenericStateMachine<T> stateMachine;
@@ -15,36 +14,37 @@ namespace StatePattern.Enemy
 
         public ChargeAttackState(GenericStateMachine<T> stateMachine) => this.stateMachine = stateMachine;
 
-        public void OnStateEnter() => SetTarget();
-
-        public void Update()
+        public void OnStateEnter()
         {
-            MoveTowardsTarget();
-
-            if (ReachedTarget())
+            target = GameService.Instance.PlayerService.GetPlayer();
+            if (Owner is TitanisController titan)
             {
-                ResetPath();
-                
-                Owner.ChargeAttack();
-                stateMachine.ChangeState(States.CHARGE_ATTACK);
+                titan.Agent.speed = titan.Data.ChargeSpeed;
             }
         }
 
-        public void OnStateExit() => target = null;
-
-        private void SetTarget() => target = GameService.Instance.PlayerService.GetPlayer();
-        private bool MoveTowardsTarget() => Owner.Agent.SetDestination(target.Position);
-
-        private bool ReachedTarget()
+        public void Update()
         {
-            var currentDistanceFromPlayer = Vector3.Distance(Owner.Position, target.Position);
-            return currentDistanceFromPlayer <= Owner.Data.PlayerAtackingDistance;
+            if (target != null)
+            {
+                Owner.Agent.SetDestination(target.Position);
+                if (Vector3.Distance(Owner.Position, target.Position) <= Owner.Data.PlayerAtackingDistance)
+                {
+                    Owner.Agent.ResetPath();
+                    Owner.ChargeAttack();
+                    stateMachine.ChangeState(States.IDLE);
+                }
+            }
         }
 
-        private void ResetPath()
+        public void OnStateExit()
         {
-            Owner.Agent.isStopped = true;
-            Owner.Agent.ResetPath();
+            if (Owner is TitanisController titan)
+            {
+                titan.Agent.speed = titan.Data.MovementSpeed;
+            }
+
+            target = null;
         }
     }
 }

@@ -1,5 +1,6 @@
 using StatePattern.Main;
 using StatePattern.StateMachine;
+using UnityEngine;
 
 namespace StatePattern.Enemy
 {
@@ -8,6 +9,7 @@ namespace StatePattern.Enemy
         public EnemyController Owner { get; set; }
 
         private GenericStateMachine<T> stateMachine;
+        private float roarTimer;
 
         public RoaringState(GenericStateMachine<T> stateMachine) => this.stateMachine = stateMachine;
 
@@ -15,13 +17,19 @@ namespace StatePattern.Enemy
         {
             GameService.Instance.SoundService.PlaySoundEffects(Sound.SoundType.ENEMY_BOSS_ROAR);
             GameService.Instance.PlayerService.SlowPlayerDown(Owner.Data.SlowPlayerDownDuration);
-            if (typeof(T) == typeof(InfernothController))
+            Owner.ShakeNearbyObjects();
+            roarTimer = Owner.Data.RoarDuration;
+        }
+
+        public void Update()
+        {
+            roarTimer -= Time.deltaTime;
+            if (roarTimer <= 0)
             {
                 stateMachine.ChangeState(States.CHASING);
             }
         }
 
-        public void Update() { }
         public void OnStateExit() { }
     }
 }

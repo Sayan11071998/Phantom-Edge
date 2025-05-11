@@ -1,4 +1,4 @@
-🚀 **Project Spotlight: Phantom Edge** 🚀  
+# 🚀 **Project Spotlight: Phantom Edge** 🚀  
 I’m thrilled to unveil **Phantom Edge**, my Unity passion project—a sleek, stealthy action game inspired by the fast-paced thrills of *Hunter Assassin*, built on a robust, data-driven foundation for rapid iteration and scalable complexity.
 
 ---

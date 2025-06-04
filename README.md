@@ -43,6 +43,14 @@ I’m thrilled to unveil **Phantom Edge**, my Unity passion project—a sleek, s
 ### 📝 Reflections
 Building **Phantom Edge** has been an incredible journey—melding stealth action with a scalable, maintainable codebase. I’m eager to connect with fellow developers tackling complex systems and share insights on creating immersive, data-driven experiences. Let’s swap stories and level up together! 🔥
 
+---
+
+## Play Link
+https://sayannandi.itch.io/phantom-edge
+
+[![Watch the video](https://img.youtube.com/vi/4C3GNWeGwQs/maxresdefault.jpg)](https://youtu.be/4C3GNWeGwQs)
+### [Gameplay Video](https://youtu.be/4C3GNWeGwQs)
+
 ![Image](https://github.com/user-attachments/assets/4904a4b8-aacd-460d-8533-299a5b0b3fad)
 
 ![Image](https://github.com/user-attachments/assets/85cbfee1-7078-45e6-b1dd-d2b0711ff8b2)
